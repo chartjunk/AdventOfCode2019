@@ -8,5 +8,5 @@ let rec getTotalFuelForMass m = Fuel.getForMass m |> function
 
 [<EntryPoint; STAThread>]
 let main _ =
-    Clipboard.apply (String.linesToIntList >> Seq.sumBy getTotalFuelForMass >> string)
+    Clipboard.apply (String.linesToIntSeq >> Seq.sumBy getTotalFuelForMass >> string)
     0

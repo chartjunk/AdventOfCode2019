@@ -10,10 +10,18 @@ module Clipboard =
 
 module String =
     let newline = Environment.NewLine
-    let toSeq (separator: string) (source: string) = source.Split([|separator|], StringSplitOptions.RemoveEmptyEntries)
-    let linesToList<'T> (converter: string -> 'T) = toSeq newline >> Seq.map(converter) >> Seq.toList
-    let linesToStringList = linesToList<string> id
-    let linesToIntList = linesToList<int> int
+    let toSeq (separator: string) converter (source: string) = source.Split([|separator|], StringSplitOptions.RemoveEmptyEntries) |> Seq.map(converter)
+    let linesToSeq converter = toSeq newline converter
+    let linesToStringSeq = linesToSeq id
+    let linesToIntSeq = linesToSeq int
+    let csvToIntSeq = toSeq "," int
+
+module List =
+    let replace ix sub = List.mapi (fun ix0 x -> if ix0 = ix then sub else x)
+    let slice ix1 ix2 list = list |> List.skip ix1 |> List.take ix2
+
+module Pair =
+    let map f (a, b) = (f a, f b)
 
 module Functional =
     let flip f a b = f b a
