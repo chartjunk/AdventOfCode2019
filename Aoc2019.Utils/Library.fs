@@ -15,6 +15,7 @@ module String =
     let linesToStringSeq = linesToSeq id
     let linesToIntSeq = linesToSeq int
     let csvToIntSeq = toSeq "," int
+    let csvToIntList = csvToIntSeq >> Seq.toList
 
 module List =
     let replace ix sub = List.mapi (fun ix0 x -> if ix0 = ix then sub else x)

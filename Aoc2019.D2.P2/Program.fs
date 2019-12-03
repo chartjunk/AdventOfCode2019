@@ -1,18 +1,11 @@
 ﻿open System
 open Aoc2019.Utils
 open Aoc2019.Utils.Functional
+open Aoc2019.D2.P1
 
-let instructionSize = 4
-let rec execute pointer memory = memory |> List.skip pointer |> function
-    | 99::_            -> memory
-    | op::i1::i2::o::_ -> memory |> List.replace o (match op with
-        | 1 -> (+)
-        | 2 -> (*)
-        <|| (Pair.map (flip Seq.item memory) <| (i1, i2))) |> execute (pointer + instructionSize)
-
-let getOutput noun verb (o::_::_::tail) = execute 0 [o;noun;verb]@tail |> Seq.item 0
+let bruteforce wanted memory = (seq {0..99}, seq {0..99}) ||> Seq.allPairs |> Seq.find (flip IntCode.invoke memory >> (=)wanted)
 
 [<EntryPoint; STAThread>]
 let main _ =
-    Clipboard.apply (String.csvToIntSeq >> Seq.toList >> getOutput 12 2 >> string)
+    Clipboard.apply (String.csvToIntList >> bruteforce 19690720 >> (fun (noun, verb) -> 100*noun+verb) >> string)
     0

@@ -11,4 +11,4 @@ module IntCode =
             | 1 -> (+)
             | 2 -> (*)
             <|| (Pair.map (flip Seq.item memory) <| (i1, i2))) |> execute (pointer + instructionSize)
-    let invoke noun verb (o::_::_::tail) = [o;noun;verb]@tail |> execute 0 |> Seq.item 0
+    let invoke (noun, verb) (o::_::_::tail) = [o;noun;verb]@tail |> execute 0 |> Seq.item 0

@@ -10,6 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Aoc2019.D2.P1\Aoc2019.D2.P1.fsproj" />
     <ProjectReference Include="..\Aoc2019.Utils\Aoc2019.Utils.fsproj" />
   </ItemGroup>
 
