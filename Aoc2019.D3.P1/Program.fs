@@ -10,7 +10,7 @@ let absoluteMovements =
 let maybeIntersectionAt (hy:int, hx:int, hnx:int) (vx:int, vy:int, vny:int) =
     match Math.Min(hx, hnx) <= vx && Math.Max(hx, hnx) >= vx && Math.Min(vy, vny) <= hy && Math.Max(vy, vny) >= hy with
     | true -> Some (vx, hy)
-    | _ -> None
+    | _    -> None
 
 let manhattanDistance (x:int) (y:int) = Math.Abs(x) + Math.Abs(y)
 
