@@ -1,9 +1,11 @@
 ﻿open System
 open Aoc2019.Utils
 
-let absoluteMovements = Seq.fold (fun (x, y, hs, vs) (next: string) -> let len = int next.[1..] in match next.[0] with
-    | c&'U' | c&'D' -> let ny = (match c with | 'U' -> (+) | _ -> (-)) y len in x, ny, hs, vs@[(x, y, ny)]
-    | c             -> let nx = (match c with | 'R' -> (+) | _ -> (-)) x len in nx, y, hs@[(y, x, nx)], vs) (0, 0, [], []) >> fun (_, _, hs, vs) -> hs, vs
+let absoluteMovements =
+    Seq.fold (fun (x, y, hs, vs) (next: string) -> let len = int next.[1..] in match next.[0] with
+    | c&'U' | c&'D' -> let ny = (match c with | 'U' -> (+) | _ -> (-)) y len in x, ny, hs, (x, y, ny)::vs
+    | c             -> let nx = (match c with | 'R' -> (+) | _ -> (-)) x len in nx, y, (y, x, nx)::hs, vs) (0, 0, [], [])
+    >> fun (_, _, hs, vs) -> hs, vs
 
 let maybeIntersectionAt (hy:int, hx:int, hnx:int) (vx:int, vy:int, vny:int) =
     match Math.Min(hx, hnx) <= vx && Math.Max(hx, hnx) >= vx && Math.Min(vy, vny) <= hy && Math.Max(vy, vny) >= hy with
