@@ -13,7 +13,10 @@ module String =
     let toSeq (separator: string) converter (source: string) = source.Split([|separator|], StringSplitOptions.RemoveEmptyEntries) |> Seq.map(converter)
     let linesToSeq converter = toSeq newline converter
     let linesToStringSeq = linesToSeq id
+    let linesToStringList = linesToStringSeq >> Seq.toList
     let linesToIntSeq = linesToSeq int
+    let csvToStringSeq = toSeq "," id
+    let csvToStringList = csvToStringSeq >> Seq.toList
     let csvToIntSeq = toSeq "," int
     let csvToIntList = csvToIntSeq >> Seq.toList
 
