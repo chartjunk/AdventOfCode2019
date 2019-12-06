@@ -5,8 +5,7 @@ open Aoc2019.Utils.Functional
 open System
 
 module Wires =
-    let manhattanDistance (x:int) (y:int) = Math.Abs(x) + Math.Abs(y)
-
+    
     let movements =
         List.fold (fun (x, y, ms) (next:string) -> let len = int next.[1..] in match next.[0] with
         | c&'U' | c&'D' -> let ny = (match c with | 'U' -> (+) | _ -> (-)) y len in x, ny, (x, y, ny, 0)::ms
