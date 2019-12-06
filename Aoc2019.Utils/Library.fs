@@ -21,7 +21,7 @@ module String =
     let csvToIntList = csvToIntSeq >> Seq.toList
 
 module List =
-    let replace ix sub = List.mapi (fun ix0 x -> if ix0 = ix then sub else x)
+    let replace<'T> ix (sub:'T) = List.mapi (fun ix0 x -> if ix0 = ix then sub else x)
     let slice ix1 ix2 list = list |> List.skip ix1 |> List.take ix2
 
 module Seq =
