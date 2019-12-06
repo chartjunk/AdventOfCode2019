@@ -6,11 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-	<Compile Include="Library.fs" />
 	<Compile Include="Program.fs" />
   </ItemGroup>
 
   <ItemGroup>
+	<ProjectReference Include="..\Aoc2019.D3.P1\Aoc2019.D3.P1.fsproj" />
 	<ProjectReference Include="..\Aoc2019.Utils\Aoc2019.Utils.fsproj" />
   </ItemGroup>
 

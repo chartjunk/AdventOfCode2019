@@ -21,6 +21,8 @@ module String =
     let csvToIntList = csvToIntSeq >> Seq.toList
 
 module List =
+    let collecti f = List.mapi f >> List.collect id
+    let choosei f = List.mapi f >> List.choose id
     let replace ix sub = List.mapi (fun ix0 x -> if ix0 = ix then sub else x)
     let slice ix1 ix2 list = list |> List.skip ix1 |> List.take ix2
 
@@ -29,3 +31,5 @@ module Pair =
 
 module Functional =
     let flip f a b = f b a
+    let thd (a, b, c) = c
+    let fth (a, b, c, d) = d
