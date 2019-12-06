@@ -17,6 +17,8 @@ Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Aoc2019.D3.P1", "Aoc2019.D3
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Aoc2019.D3.P2", "Aoc2019.D3.P2\Aoc2019.D3.P2.fsproj", "{2822F215-DAB9-4CDF-8820-05158DA6DC80}"
 EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "Aoc2019.D4.P1", "Aoc2019.D4.P1\Aoc2019.D4.P1.fsproj", "{F728021D-F08A-4C9D-8B61-6347C20C5A5B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{2822F215-DAB9-4CDF-8820-05158DA6DC80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2822F215-DAB9-4CDF-8820-05158DA6DC80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2822F215-DAB9-4CDF-8820-05158DA6DC80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F728021D-F08A-4C9D-8B61-6347C20C5A5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F728021D-F08A-4C9D-8B61-6347C20C5A5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F728021D-F08A-4C9D-8B61-6347C20C5A5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F728021D-F08A-4C9D-8B61-6347C20C5A5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

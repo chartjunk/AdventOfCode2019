@@ -35,3 +35,10 @@ module Functional =
     let flip f a b = f b a
     let thd (a, b, c) = c
     let fth (a, b, c, d) = d
+    type MaybeItBuilder<'T>(it:'T) =
+        member this.Yield(x) = x |> Option.map(fun _ -> it) 
+        member this.For(m, f) = m |> Option.map f
+        member this.Combine(a, b) = match a with
+        | Some _ -> b
+        | None   -> None
+        member this.Delay(f) = f()

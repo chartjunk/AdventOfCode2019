@@ -1,6 +1,5 @@
 ﻿open System
 open Aoc2019.Utils
-open Aoc2019.Utils.Functional
 open Aoc2019.D3.P1.Wires
 
 let length (_, i1:int, i2, _) = Math.Abs(i2 - i1)
