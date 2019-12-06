@@ -27,6 +27,7 @@ module List =
 module Seq =
     let collecti f = Seq.mapi f >> Seq.collect id
     let choosei f = Seq.mapi f >> Seq.choose id
+    let all f = Seq.exists (f >> (not)) >> (not)
 
 module Pair =
     let map f (a, b) = (f a, f b)
@@ -35,10 +36,3 @@ module Functional =
     let flip f a b = f b a
     let thd (a, b, c) = c
     let fth (a, b, c, d) = d
-    type MaybeItBuilder<'T>(it:'T) =
-        member this.Yield(x) = x |> Option.map(fun _ -> it) 
-        member this.For(m, f) = m |> Option.map f
-        member this.Combine(a, b) = match a with
-        | Some _ -> b
-        | None   -> None
-        member this.Delay(f) = f()
