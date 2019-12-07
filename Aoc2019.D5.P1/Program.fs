@@ -2,12 +2,12 @@
 open Aoc2019.Utils
 open Aoc2019.Utils.Functional
 
-let read source (memory:list<int>) = function | 0 -> memory.[source] | _ -> source
+let read source = function | 0 -> Seq.item source | _ -> fun _ -> source
 let write target = List.replace target
 
 let mode mps p = (float)mps % (10. ** ((float)p)) / (10. ** (float)(p - 1)) |> int
-let calcOp f mps p1 p2 p3 memory = let r p i = read p memory (mode mps i) in f (r p1 1) (r p2 2) |> flip (write p3) memory
-let outputOp mps p1 memory = read p1 memory (mode mps 1)
+let calcOp f mps p1 p2 p3 memory = let r p i = read p (mode mps i) memory in f (r p1 1) (r p2 2) |> flip (write p3) memory
+let outputOp mps p1 = read p1 (mode mps 1)
 
 let execute input =
     let rec executeRec output pos memory =
