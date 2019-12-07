@@ -24,7 +24,8 @@ module IntCode2 =
                 | o&(1|2|7|8), p1::p2::p3::_ ->
                     let f =
                         match o with
-                        | 1 -> (+) | 2 -> (*) 
+                        | 1 -> (+)
+                        | 2 -> (*)
                         | o&(7|8) -> fun a b -> Convert.ToInt32(((match o with | 7 -> (<) | 8 -> (=)) a b))
                     output, pos + 4, calcOp f ms p1 p2 p3 mem
                 | 3, p1::_                   -> output, pos + 2, write p1 input mem
