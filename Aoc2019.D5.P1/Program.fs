@@ -19,7 +19,7 @@ let execute input =
             | 4, p1::_ -> (outputOp mps p1 memory)::output, pos + 2, memory
             | _        -> match instruction with
                 | o&(1|2), p1::p2::p3::_ -> output, pos + 4, calcOp (match o with | 1 -> (+) | _ -> (*)) mps p1 p2 p3 memory
-                | 3, p1::_  -> output, pos + 2, write p1 input memory
+                | 3, p1::_               -> output, pos + 2, write p1 input memory
             |||> executeRec
     executeRec [] 0 >> Seq.head
 
