@@ -15,11 +15,10 @@ let execute input =
         let mps = op / 100;
         match op % 100 with
         | 99 -> output
-        | _  -> let instruction = (op % 10, tail) in match instruction with
-            | 4, p1::_ -> (outputOp mps p1 memory)::output, pos + 2, memory
-            | _        -> match instruction with
-                | o&(1|2), p1::p2::p3::_ -> output, pos + 4, calcOp (match o with | 1 -> (+) | _ -> (*)) mps p1 p2 p3 memory
-                | 3, p1::_               -> output, pos + 2, write p1 input memory
+        | _  -> match op % 10, tail with
+            | o&(1|2), p1::p2::p3::_ -> output, pos + 4, calcOp (match o with | 1 -> (+) | _ -> (*)) mps p1 p2 p3 memory
+            | 3, p1::_               -> output, pos + 2, write p1 input memory
+            | 4, p1::_               -> (outputOp mps p1 memory)::output, pos + 2, memory
             |||> executeRec
     executeRec [] 0 >> Seq.head
 
