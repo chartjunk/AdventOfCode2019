@@ -11,10 +11,9 @@ let orbits =
             let rec orbitsRec chain =
                 (=)
                 >> flip Seq.tryFind pcsd.Keys
-                >> Option.map (fun p -> (p, pcsd.[p]))
                 >> function
-                | Some (p, cs) ->
-                    cs
+                | Some p ->
+                    pcsd.[p]
                     |> List.collect (fun c -> (p, c)::(List.map(fun (a, _) -> (a, c)) chain)@(orbitsRec ((p, c)::chain) c))
                 | None -> []
             pcsd.Keys
