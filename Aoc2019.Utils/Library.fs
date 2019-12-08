@@ -11,6 +11,7 @@ module Clipboard =
 module String =
     let newline = Environment.NewLine
     let toSeq (separator: string) converter (source: string) = source.Split([|separator|], StringSplitOptions.RemoveEmptyEntries) |> Seq.map(converter)
+    let split s = toSeq s id >> Seq.toList
     let linesToSeq converter = toSeq newline converter
     let linesToStringSeq = linesToSeq id
     let linesToStringList = linesToStringSeq >> Seq.toList
